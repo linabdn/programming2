@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the side navigation */
+.sidenav {
+  top: 100px;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  background-color: #F5C74D;
+  overflow-x: hidden;
+}
+
+/*make the active user text inherit style from container*/
+
+.inbox__people{
+    color: #8894B7;
+    padding: 16px;
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+h4{
+  font-size: 1.8rem;
+
+}
+
+/* Style the content */
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px); /* prend toute la hauteur sauf la navbar du haut */
+  flex:1;
+}
+
+
+.messages__history, .fallback, .inbox__messages {
+  flex: 1;
+}
+
+.messages__history{
+  font-size: 14px;
+}
+
+.message_form {
+  display: flex;
+  
+}
+.message_form__input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-family: poppins;
+}
+
+.sent__message{
+  font-size: 16px;
+  text-align: right;
+  background-color: #8894B7;
+  padding: 5px 16px;
+  margin: 16px;
+  color: white;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.outgoing__message{
+  text-align: right;
+}
+
+.received__message{
+  font-size: 16px;
+  text-align: left;
+  background-color: #F5C74D;
+  padding: 5px 16px;
+  margin: 16px;
+  color: white;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.incoming__message{
+  text-align: left;
+}
