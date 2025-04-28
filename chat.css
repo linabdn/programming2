@@ -47,30 +47,35 @@ h4{
 
 }
 
-/* Style the content */
 .content {
   margin-left: 200px;
   padding-left: 20px;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 150px); /* prend toute la hauteur sauf la navbar du haut */
-  flex:1;
+  height: calc(100vh - 150px); 
+  overflow: hidden; /* no scroll on the main content */
 }
 
-
-.messages__history, .fallback, .inbox__messages {
+.messages__history {
   flex: 1;
-}
-
-.messages__history{
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
 }
 
+.fallback{
+  color: red;
+}
+
+
 .message_form {
   display: flex;
-  
+  flex-shrink: 0;
+  padding-top: 10px;
 }
+
 .message_form__input {
   flex: 1;
   padding: 10px;
@@ -108,4 +113,36 @@ h4{
 
 .incoming__message{
   text-align: left;
+}
+
+/* Add this to your existing CSS */
+.system__message {
+display: flex;
+justify-content: center;
+margin: 10px 0;
+}
+
+.system__content {
+background-color: #e0e0e0;
+padding: 5px 16px;
+margin: 16px;
+color: #555;
+display: inline-block;
+border-radius: 10px;
+max-width: 60%;
+font-size: 16px;
+text-align: center;
+}
+
+.system__content .message__info {
+font-size: 0.8em;
+margin-top: 3px;
+}
+
+.typing-indicator {
+height: 20px;
+padding: 5px 10px;
+font-size: 0.8em;
+color: #8894B7;
+font-style: italic;
 }
