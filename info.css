@@ -2,7 +2,7 @@
 
 .images{
     display: flex;
-    flex-wrap: wrap; /* Allow the items to wrap if there's not enough space */
+    flex-wrap: wrap; 
     justify-content: space-between;
 }
 
@@ -92,6 +92,7 @@
 .lightbox-content h3{
     text-align: center;
     color: #8894B7;
+    padding-bottom: 10px;
 }
 .lightbox-content p{
     font-size: 1.5rem;
@@ -99,7 +100,6 @@
 
 .lightbox-content a {
     color: #e98dbc;
-    font-size: 1.4rem;
     text-align: center;
     font-weight: bold;
 }
@@ -151,15 +151,13 @@
     border: 5px solid #8894B7;
     border-radius: 3rem;
     height: 550px;
-    transition: 0.3s ease-in-out;
 }
 
 .content-info{
     padding: 10%;
 }
 
-.content-info h4{
-    text-align: center;
+h4{
     font-size: large;
 }
 
@@ -168,10 +166,10 @@ span{
     color: #8894B7;
 }
 
-#lightbox1 .content-box {
-    height: 600px;
-}
-
 #lightbox2 .content-box {
     height:400px;
+}
+
+.contact p{
+    font-size: 18px;
 }
