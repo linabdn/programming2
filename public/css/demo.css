@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the side navigation */
+.sidenav {
+  top: 100px;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  background-color: #F5C74D;
+  overflow-x: hidden;
+}
+
+/*make the active user text inherit style from container*/
+
+.inbox__people{
+    color: #8894B7;
+    padding: 16px;
+}
+
+
+h4{
+  font-size: 1.8rem;
+
+}
+
+/*layout for images and input form*/
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px); 
+  overflow: hidden; /* no scroll on the main content */
+}
+
+/*layout for all the messages*/
+.messages__history {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+/*necessary styles for message form*/
+.message_form {
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 10px;
+}
+
+.message_form__input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-family: poppins;
+}
+
+/*styles for sent and outgoing messages*/
+.sent__message{
+  font-size: 16px;
+  text-align: right;
+  background-color: #8894B7;
+  padding: 5px 16px;
+  margin: 16px;
+  color: white;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.outgoing__message{
+  text-align: right;
+}
+
+.received__message{
+  font-size: 16px;
+  text-align: left;
+  background-color: #F5C74D;
+  padding: 5px 16px;
+  margin: 16px;
+  color: white;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.incoming__message{
+  text-align: left;
+}
+
+/*simple styles for the typing indicator*/
+.typing-indicator {
+  padding: 5px 10px;
+  font-size: 1.5em;
+  color: #e98dbc;
+  font-weight: bold;
+  font-style: italic;
+}
+
+@media (max-width: 720px) {  /*adapting the layout to smaller screens*/
+
+  .sidenav{
+    width:0px; /*hiding navbar*/
+  }
+
+  /*layout for images and input form*/
+  .content {
+    margin-left: 0px; /*removing margin on the left*/
+    padding-left: 20px;
+  }
+
+
+
+}
