@@ -4,71 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lina Mnemoi</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+    <!--making of a navbar at the top (the same for all pages)-->
     <header>
         <a href="#" class="logo">Lina Mnemoi</a>
 
         <i class="bx bx-menu" id="menu-icon"></i>
 
         <nav>
-            <a href="info.html" class="btn">RESUME</a>
+            <a href="info.html" class="btn">about</a>
             <a href="chat.html" class="btn">CHAT</a>
-            <a href="contact.html" class="btn">CONTACT ME</a>
         </nav>
 
         
     </header>
 
-    <div class="wallpaper" id="wallpaper"></div>
+    <div class="wallpaper" id="wallpaper"></div> <!-- floating flowers background-->
 
-    <section class="home_content">
+
+    <!--content of the page = image, text and link-->
+    <div class="home_content">
         <div class="home_img">
-            <img src="pic.jpg" alt="Portrait">
+            <img src="img/pic.jpg" alt="Portrait">
         </div>
 
         <div class="main_content">
-            <h1>Hi, I'm <span>Lina</span></h1>
-            <h3>I'm a <span>CS student</span></h3>
-            <p>I'm a computer science student at Sorbonne University in Paris. I'm currently doing an exchange at the University of Aberdeen in Scotland. I am passionate by X, X and X. For more info or to chat, click below! </p>
+            <h1>Hi, I'm Lina</h1>
+            <h3>I'm a CS student</h3>
+            <p>I'm a computer science student at Sorbonne University in Paris. I'm currently doing an exchange at the University of Aberdeen in Scotland. I am passionate by reading, crochet and coding. For more info or to chat, click below! </p>
 
-            <a href="#" class="btn">CONTACT ME</a>
-            
-
-
+            <a href="info.html" class="btn">More</a>
 
         </div>
 
-    </section>
+    </div>
 
     <script>
+        //making of the "wallpaper" background
         const wallpaper = document.getElementById("wallpaper");
-const flowerCount = 40;
+        const flowerCount = 40;
 
-for (let i = 0; i < flowerCount; i++) {
-  const flower = document.createElement("img");
-  flower.src = "flower.png"; // Replace with your PNG path
-  flower.className = "flower";
+        for (let i = 0; i < flowerCount; i++) {
+            const flower = document.createElement("img");
+            flower.src = "img/flower.png"; 
+            flower.className = "flower";
 
-  // Random position
-  flower.style.top = `${Math.random() * 100}%`;
-  flower.style.left = `${Math.random() * 100}%`;
+            //random position for each flower
+            flower.style.top = `${Math.random() * 100}%`;
+            flower.style.left = `${Math.random() * 100}%`;
 
-  // Random animation duration and delay
-  const duration = 5 + Math.random() * 4; // 5s to 9s
-  const delay = Math.random() * 3;
-  flower.style.animationDuration = `${duration}s`;
-  flower.style.animationDelay = `${delay}s`;
+            //random duration and delay for animation float defined in styles.css
+            const duration = 5 + Math.random() * 4; // 5s to 9s
+            const delay = Math.random() * 3;
+            flower.style.animationDuration = `${duration}s`;
+            flower.style.animationDelay = `${delay}s`;
 
-  // Slight size variation
-  const size = 40 + Math.random() * 20; // 24px to 40px
-  flower.style.width = `${size}px`;
+            // Slight size variation 
+            const size = 40 + Math.random() * 20; //between 40 and 60px
+            flower.style.width = `${size}px`;
 
-  wallpaper.appendChild(flower);
-}
+            wallpaper.appendChild(flower);
+        }
 
     </script>
     
