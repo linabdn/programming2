@@ -2,6 +2,16 @@
 
 Web Development class April 2025
 
+Project information:
+
+Objective:  Design a personal/professional website which includes an interactive chat application, as the client and web designer. 
+
+The website includes the following 3 pages:
+
+The first page is the introduction page where you can describe briefly who you are, what you study, etc.
+The second page will contain more detailed information. You can, for example, explain your professional interests, what courses you have taken, and what topics you are interested in. Alternatively, you could also describe your favourite leisure activities and achievements. For example, you could write about a hobby that is important for you.
+The third page should contain a chat application, implemented using JavaScript and the Node.js platform.
+
 
 ## Making of the design 
 
@@ -27,5 +37,6 @@ when wide screen going into smallscreen, the scrollbar has a bug: it either does
 ## Making of the chat page
 
 Used the given code and added styles to it. From there, I only needed to add the listening features on the javascript and add styles to them. 
+
 
 
