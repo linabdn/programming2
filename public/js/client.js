@@ -1,4 +1,4 @@
-//required for front end communication between client and server
+//most of the original code was kept intact. comments only where modifications were made or parts added
 
 const socket = io();
 
@@ -9,55 +9,42 @@ let userName = "";
 let id;
 const newUserConnected = function (data) {
     
-
-    //give the user a random unique id
     id = Math.floor(Math.random() * 1000000);
-    userName = 'user-' +id;
-    //console.log(typeof(userName));   
+    userName = 'user-' +id; 
     
-
-    //emit an event with the user id
     socket.emit("new user", userName);
-    //call
     addToUsersBox(userName);
 };
 
 const addToUsersBox = function (userName) {
-    //This if statement checks whether an element of the user-userlist
-    //exists and then inverts the result of the expression in the condition
-    //to true, while also casting from an object to boolean
     if (!!document.querySelector(`.${userName}-userlist`)) {
         return;
     
     }
     
-    //setup the divs for displaying the connected users
-    //id is set to a string including the username
     const userBox = `
     <div class="chat_id ${userName}-userlist">
       <h5>${userName}</h5>
     </div>
   `;
-    //set the inboxPeople div with the value of userbox
     inboxPeople.innerHTML += userBox;
 };
 
-//call 
 newUserConnected();
 
-//when a new user event is detected
 socket.on("new user", function (data) {
   data.map(function (user) {
           return addToUsersBox(user);
       });
 });
 
+//adding notification when a new user joins
 socket.on("user joined", function(userName) {
   const time = new Date();
   const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
 
   const joinMessage = `
-  <div class="incoming__message">
+  <div class="incoming__message"> 
     <div class="received__message" style="background-color: #e98dbc;">
       <p>${userName} joined the chat</p>
       <div class="message__info">
@@ -70,7 +57,7 @@ socket.on("user joined", function(userName) {
   messageBox.scrollTop = messageBox.scrollHeight; //autoscroll when overflow in message history
 });
 
-// Similarly for disconnections:
+//similar code for when a user leaves chat 
 socket.on("user disconnected", function(userName) {
   document.querySelector(`.${userName}-userlist`).remove();
   
@@ -88,7 +75,7 @@ socket.on("user disconnected", function(userName) {
   </div>`;
 
   document.querySelector(".messages__history").innerHTML += leaveMessage;
-  messageBox.scrollTop = messageBox.scrollHeight; //autoscroll when overflow in message history
+  messageBox.scrollTop = messageBox.scrollHeight;
 });
 
 
@@ -121,7 +108,6 @@ const addNewMessage = ({ user, message }) => {
     </div>
   </div>`;
 
-  //is the message sent or received
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg;
 };
 
@@ -136,6 +122,7 @@ messageForm.addEventListener("submit", (e) => {
     nick: userName,
   });
 
+  //timer for typing indicator stop and typing inducator stops when message is sent
   clearTimeout(typingTimer); 
   socket.emit("stop typing", userName);
 
@@ -147,31 +134,25 @@ socket.on("chat message", function (data) {
   messageBox.scrollTop = messageBox.scrollHeight; //autoscroll when overflow in message history
 });
 
-// 1. Création de l'indicateur de typing (sécurité améliorée)
-const typingIndicator = document.createElement("div");
-typingIndicator.className = "typing-indicator";
-typingIndicator.innerHTML = '<span id="typing-text"></span>';
+const typingIndicator = document.querySelector('.typing-indicator');
+const typingText = document.getElementById('typing-users');
 
-// Insertion au bon endroit (avant le formulaire dans .content)
-const contentDiv = document.querySelector(".content");
-contentDiv.insertBefore(typingIndicator, contentDiv.querySelector(".message_form"));
-
-// 2. Détection du typing avec timeout
 let typingTimer;
+//detection of typing event
 inputField.addEventListener("input", () => {
-  // Annule le précédent timeout
+  //clear last timer
   clearTimeout(typingTimer);
   
-  // Émet l'événement "typing"
+  //emits typing event
   socket.emit("typing", userName);
   
-  // Après 2 secondes sans activité, émet "stop typing"
+  //stops timing after 2 seconds of no typing
   typingTimer = setTimeout(() => {
     socket.emit("stop typing", userName);
   }, 2000);
 });
 
-// 3. Affichage des indicateurs des autres utilisateurs
+//showing notification in case of typing event
 socket.on("typing", (username) => {
   if (username !== userName) {
     typingIndicator.querySelector("span").textContent = `${username} is typing...`;
@@ -180,6 +161,6 @@ socket.on("typing", (username) => {
 });
 
 socket.on("stop typing", () => {
-  typingIndicator.style.display = "none";
+  typingIndicator.style.display = "none"; //hiding typing indicator when someone finished/stopped typing 
 });
 
